@@ -1,0 +1,143 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    width: 100%;
+    height: 80px;
+    background: var(--white);
+    border: var(--border-color);
+}
+
+.logo,.navbar-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-primary);
+}
+
+.logo img{
+    height: 80px;
+    width: 80px;
+}
+
+.profile-btn, .menu-btn{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    background: #eff6ff;
+}
+
+.profile-btn {
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.profile-btn svg,
+.menu-btn svg {
+  font-size: 1.4rem;
+}
+
+.profile-btn:hover,
+.menu-btn:hover {
+  color: var(--primary-color);
+  background-color: #e1e9f3;
+}
+
+.menu-btn {
+  display: none;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.profile-menu {
+  position: relative;
+}
+
+.profile-button {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background-color: #eff6ff;
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-button svg {
+  font-size: 1.4rem;
+}
+
+.profile-button:hover {
+  background-color: #dbeafe;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  width: 150px;
+  padding: 8px;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.dropdown-item:hover:not(:disabled) {
+  background-color: #eff6ff;
+  color: var(--primary-color);
+}
+
+.logout-item:hover:not(:disabled) {
+  background-color: #fef2f2;
+  color: var(--danger-color);
+}
+
+.dropdown-item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 64px;
+    padding: 0 16px;
+  }
+  .menu-btn {
+    display: flex;
+  }
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+  .logo h2 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .logo h2 {
+    display: none;
+  }
+}
