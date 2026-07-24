@@ -1,8 +1,9 @@
 import './App.css'
-import Employees from "./Pages/Employees";
+import AppRoutes from './Routes/AppRoutes';
+
 
 function App() {
- return <Employees/>;
+ return <><AppRoutes/></>;
 }
 
 export default App
