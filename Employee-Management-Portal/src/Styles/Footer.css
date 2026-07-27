@@ -1,7 +1,7 @@
 .app-footer {
   width: 100%;
   padding: 15px 30px;
-  background-color: var(--white-color);
+  background-color: var(--white);
   border-top: 1px solid var(--border-color);
   color: var(--text-primary);
   display: flex;

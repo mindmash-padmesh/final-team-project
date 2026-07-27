@@ -1,0 +1,149 @@
+/* ==========================================
+   Employees Layout
+========================================== */
+
+.page-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+/* Sidebar ko respect karega */
+.main-section {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.employee-content {
+    flex: 1;
+    padding: 25px;
+    background: var(--background-color);
+}
+
+/* ==========================================
+   Header
+========================================== */
+
+.employee-header {
+    margin-bottom: 25px;
+}
+
+.employee-header h1 {
+    font-size: 32px;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+}
+
+/* ==========================================
+   Toolbar
+========================================== */
+
+.employee-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+}
+
+.search-box .input {
+    width: 100%;
+}
+
+.toolbar-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ==========================================
+   Table
+========================================== */
+
+.employee-table-container {
+    width: 100%;
+    background: var(--white);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+.employee-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.employee-table th {
+    padding: 18px;
+    text-align: left;
+    background: #f8fafc;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.employee-table td {
+    padding: 18px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.employee-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width:768px) {
+
+    /* Sidebar hidden */
+    .sidebar{
+        display:none;
+    }
+
+    .main-section{
+        margin-left:0;
+        width:100%;
+    }
+
+    .employee-content{
+        padding:20px;
+    }
+
+    .employee-toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-box{
+        max-width:100%;
+    }
+
+    .toolbar-buttons{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .toolbar-buttons button{
+        flex:1;
+    }
+
+    .employee-table{
+        min-width:850px;
+    }
+
+}
