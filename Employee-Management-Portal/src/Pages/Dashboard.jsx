@@ -1,40 +1,18 @@
 import '../Styles/Dashboard.css';
 import { MdAccessTime, MdBeachAccess, MdCheckCircle, MdPeople, MdPersonOff } from 'react-icons/md';
+import Card from '../Component/Card';
+import dashboardData from '../utils/dashboardData.json';
+import recentActivities from '../utils/recentActivities.json';
 
 function Dashboard(){
 
-    const dashboardData=[
-        {
-            title:"Total Employee",
-            value:120,
-            icon:<MdPeople />,
-            className:"total-employees"
-        },
-        {
-            title:"Present Today",
-            value:98,
-            icon:<MdCheckCircle />,
-            className:"present-employees"
-        },
-        {
-            title:"Absent Today",
-            value:22,
-            icon:<MdPersonOff />,
-            className:"absent-employees"
-        },
-        {
-            title:"Pending Leaves",
-            value:8,
-            icon:<MdBeachAccess />,
-            className:"pending-leaves"
-        },
-        {
-            title:"Pending Timesheets",
-            value:12,
-            icon:<MdAccessTime />,
-            className:"pending-timesheets"
-        }
-    ];
+    const iconMap = {
+      MdPeople: <MdPeople />,
+      MdCheckCircle: <MdCheckCircle />,
+      MdPersonOff: <MdPersonOff />,
+      MdBeachAccess: <MdBeachAccess />,
+      MdAccessTime: <MdAccessTime />
+    };
 
     return(
         <div className="dashboard-container">
@@ -45,7 +23,31 @@ function Dashboard(){
                 </div>
                 <span>{new Date().toLocaleDateString()}</span>
             </div>
-            
+            <section className='dashboard-stats'>
+              {dashboardData.map((item) => (
+                <div key={item.title} className={`dashboard-stat-card ${item.className}`}>
+                    <div className="stat-icon">{iconMap[item.icon]}</div>
+                    <div className="stat-information">
+                      <p>{item.title}</p>
+                      <h2>{item.value}</h2>
+                    </div>
+                </div>
+              ))}
+            </section>
+            <section className='recent-activities'>
+                <h2>Recent Activities</h2>
+                <div className="activities-list">
+                  {recentActivities.map((activity) => (
+                    <div className="activity-item" key={activity.id}>
+                       <div className="activity-dot"></div>
+                       <div className="activity-information">
+                          <p>{activity.text}</p>
+                          <span>{activity.time}</span>
+                        </div>
+                    </div>
+                   ))}
+                </div>
+            </section>
         </div>
     )
 }

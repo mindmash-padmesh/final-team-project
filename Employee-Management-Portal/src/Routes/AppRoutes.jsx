@@ -6,6 +6,7 @@ import Footer from "../Component/Footer";
 import Login from "../Pages/Login";
 import Dashboard from "../Pages/Dashboard";
 import Profile from "../Pages/Profile";
+import NotFound from '../Pages/NotFound';
 
 function AppRoutes(){
     const location = useLocation();
@@ -25,6 +26,7 @@ function AppRoutes(){
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/*" element={<NotFound />}/>
           </Routes>
         </main>
         <Footer />
