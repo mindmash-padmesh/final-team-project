@@ -1,18 +1,12 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import {Routes, Route} from 'react-router-dom';
+import Layout from '../Layout/Layout';
 
-import Employees from "../Pages/Employees";
-import AddEmployee from "../Pages/AddEmployee";
-
-function AppRoutes() {
-  return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/employees" replace />} />
-
-      <Route path="/employees" element={<Employees />} />
-
-      <Route path="/add-employee" element={<AddEmployee />} />
-    </Routes>
-  );
+function AppRoutes(){
+    return(
+        <>
+        <Layout/>
+        </>
+    )
 }
 
 export default AppRoutes;
