@@ -1,4 +1,4 @@
-.input{
+.custom-input{
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #d1d5db;
@@ -10,10 +10,10 @@
     transition: border-color 0.3s;
 }
 
-.input::placeholder{
+.custom-input::placeholder{
     color: var(--text-secondary);
 }
 
-.input:focus{
+.custom-input:focus{
     border-color: var(--primary-color);
 }
