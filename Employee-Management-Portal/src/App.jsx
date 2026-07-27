@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./App.css";
 import { Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Navbar from "./Component/Navbar";
@@ -31,6 +32,14 @@ function App() {
       </div>
     </div>
   );
+=======
+import './App.css'
+import AppRoutes from './Routes/AppRoutes';
+
+
+function App() {
+ return <><AppRoutes/></>;
+>>>>>>> 5390de7a276d3c01062eeb14406195d6b2bb5f49
 }
 
 export default App;
