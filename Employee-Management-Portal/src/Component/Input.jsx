@@ -18,7 +18,7 @@ function Input({
             onChange={onChange}
             name={name}
             id={id}
-            className={`input ${className}`}
+            className={`custom-input ${className}`}
             disabled={disabled}
             required={required}
         />
