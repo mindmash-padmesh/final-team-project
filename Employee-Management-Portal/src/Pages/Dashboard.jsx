@@ -3,6 +3,7 @@ import { MdAccessTime, MdBeachAccess, MdCheckCircle, MdPeople, MdPersonOff } fro
 import Card from '../Component/Card';
 import dashboardData from '../utils/dashboardData.json';
 import recentActivities from '../utils/recentActivities.json';
+import RecentActivities from '../Component/RecentActivities';
 
 function Dashboard(){
 
@@ -34,7 +35,7 @@ function Dashboard(){
                 </div>
               ))}
             </section>
-            <section className='recent-activities'>
+            {/* <section className='recent-activities'>
                 <h2>Recent Activities</h2>
                 <div className="activities-list">
                   {recentActivities.map((activity) => (
@@ -47,7 +48,9 @@ function Dashboard(){
                     </div>
                    ))}
                 </div>
-            </section>
+            </section> */}
+
+            <RecentActivities />
         </div>
     )
 }

@@ -27,12 +27,6 @@ function Employees() {
 
   return (
     <>
-      <div className="page-layout">
-        <Sidebar />
-
-        <div className="main-section">
-          <Navbar />
-
           <main className="employee-content">
             <div className="employee-header">
               <h1>Employees</h1>
@@ -83,9 +77,6 @@ function Employees() {
               </table>
             </div>
           </main>
-          <Footer />
-        </div>
-      </div>
     </>
   );
 }

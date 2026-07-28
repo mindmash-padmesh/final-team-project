@@ -95,7 +95,7 @@
   color: #7c3aed;
 }
 
-.recent-activities {
+/* .recent-activities {
   width: 100%;
 }
 
@@ -139,7 +139,7 @@
 .activity-information span {
   color: var(--text-secondary);
   font-size: 0.8rem;
-}
+} */
 
 @media (max-width: 1200px) {
   .dashboard-stats {
