@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .page-layout {
     display: flex;
     min-height: 100vh;
@@ -14,17 +13,11 @@
     overflow-x: hidden;
 }
 
-=======
->>>>>>> 96442f6ed2aea2896eb4c255b8dedd9b22fa9312
 .employee-content {
     flex: 1;
     padding: 25px;
     background: var(--background-color);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 96442f6ed2aea2896eb4c255b8dedd9b22fa9312
 .employee-header {
     margin-bottom: 25px;
 }
@@ -33,10 +26,6 @@
     color: var(--text-primary);
     margin-bottom: 25px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 96442f6ed2aea2896eb4c255b8dedd9b22fa9312
 .employee-toolbar {
     display: flex;
     justify-content: space-between;
@@ -74,16 +63,9 @@
     gap: 6px;
 }
 
-<<<<<<< HEAD
-@media (max-width:768px) {
 
-    .sidebar {
-        display: none;
-    }
-    .main-section {
-        margin-left: 0;
-        width: 100%;
-=======
+
+   
 .employee-table th {
     padding: 18px;
     text-align: left;
@@ -102,12 +84,15 @@
     background: #f8fafc;
 }
 
+
 @media (max-width:768px) {
 
-    .main-section{
-        margin-left:0;
-        width:100%;
->>>>>>> 96442f6ed2aea2896eb4c255b8dedd9b22fa9312
+    .sidebar {
+        display: none;
+    }
+    .main-section {
+        margin-left: 0;
+        width: 100%;
     }
     .employee-content {
         padding: 20px;
