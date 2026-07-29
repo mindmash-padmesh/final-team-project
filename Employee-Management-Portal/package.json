@@ -12,10 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-<<<<<<< HEAD
     "@mui/icons-material": "^9.2.0",
-=======
->>>>>>> 41bb35a2397228dbfbf34f58ab465b678be29c88
     "@mui/material": "^9.2.0",
     "@mui/x-data-grid": "^9.10.1",
     "react": "^19.2.7",
