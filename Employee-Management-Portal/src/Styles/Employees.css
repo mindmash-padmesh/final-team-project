@@ -1,19 +1,31 @@
+.page-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.main-section {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
 .employee-content {
     flex: 1;
     padding: 25px;
     background: var(--background-color);
 }
-
 .employee-header {
     margin-bottom: 25px;
 }
-
 .employee-header h1 {
     font-size: 32px;
     color: var(--text-primary);
     margin-bottom: 25px;
 }
-
 .employee-toolbar {
     display: flex;
     justify-content: space-between;
@@ -24,17 +36,14 @@
 
 .search-box {
     flex: 1;
-    min-width: 280px;
-    max-width: 380px;
-}
-
-.search-box .input {
-    width: 100%;
+    min-width: 300px;
+    max-width: 420px;
 }
 
 .toolbar-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -42,18 +51,21 @@
     width: 100%;
     background: var(--white);
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 30px;
-    overflow-x: auto;
+    overflow: hidden;
     border: 1px solid var(--border-color);
 }
-
-.employee-table {
-    width: 100%;
-    min-width: 900px;
-    border-collapse: collapse;
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
 }
 
+
+
+   
 .employee-table th {
     padding: 18px;
     text-align: left;
@@ -72,37 +84,38 @@
     background: #f8fafc;
 }
 
+
 @media (max-width:768px) {
 
-    .main-section{
-        margin-left:0;
-        width:100%;
+    .sidebar {
+        display: none;
     }
-
-    .employee-content{
-        padding:20px;
+    .main-section {
+        margin-left: 0;
+        width: 100%;
     }
-
-    .employee-toolbar{
-        flex-direction:column;
-        align-items:stretch;
+    .employee-content {
+        padding: 20px;
     }
-
-    .search-box{
-        max-width:100%;
+    .employee-header h1 {
+        font-size: 28px;
+        text-align: center;
     }
-
-    .toolbar-buttons{
-        width:100%;
-        justify-content:space-between;
+    .employee-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
     }
-
-    .toolbar-buttons button{
-        flex:1;
+    .search-box {
+        width: 100%;
+        max-width: 100%;
     }
-
-    .employee-table{
-        min-width:850px;
+    .toolbar-buttons {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
     }
-
+    .employee-table-container {
+        height: 500px;
+    }
 }

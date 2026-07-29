@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Layout from "../Layout/Layout";
 
@@ -23,7 +23,6 @@ function AppRoutes() {
         <Route path="timesheets" element={<Timesheets/>}/>
         <Route path="profile" element={<Profile/>}/>
       </Route>
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
