@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "employee": "Rahul Sharma",
+    "activity": "New employee added",
+    "department": "Development",
+    "time": "5 minutes ago"
+  },
+  {
+    "id": 2,
+    "employee": "Priya Singh",
+    "activity": "Leave approved",
+    "department": "Human Resources",
+    "time": "12 minutes ago"
+  },
+  {
+    "id": 3,
+    "employee": "Aman Verma",
+    "activity": "Profile updated",
+    "department": "Development",
+    "time": "20 minutes ago"
+  },
+  {
+    "id": 4,
+    "employee": "Neha Gupta",
+    "activity": "Leave requested",
+    "department": "Finance",
+    "time": "30 minutes ago"
+  },
+  {
+    "id": 5,
+    "employee": "Rohit Kumar",
+    "activity": "Attendance marked",
+    "department": "Marketing",
+    "time": "45 minutes ago"
+  },
+  {
+    "id": 6,
+    "employee": "Sneha Patel",
+    "activity": "Profile updated",
+    "department": "Human Resources",
+    "time": "1 hour ago"
+  },
+  {
+    "id": 7,
+    "employee": "Arjun Mehta",
+    "activity": "Leave approved",
+    "department": "Development",
+    "time": "1 hour ago"
+  },
+  {
+    "id": 8,
+    "employee": "Kavya Joshi",
+    "activity": "New employee added",
+    "department": "Design",
+    "time": "2 hours ago"
+  },
+  {
+    "id": 9,
+    "employee": "Vikas Yadav",
+    "activity": "Leave rejected",
+    "department": "Sales",
+    "time": "2 hours ago"
+  },
+  {
+    "id": 10,
+    "employee": "Anjali Mishra",
+    "activity": "Attendance marked",
+    "department": "Finance",
+    "time": "3 hours ago"
+  },
+  {
+    "id": 11,
+    "employee": "Sahil Kapoor",
+    "activity": "Profile updated",
+    "department": "Marketing",
+    "time": "3 hours ago"
+  },
+  {
+    "id": 12,
+    "employee": "Pooja Chauhan",
+    "activity": "Leave requested",
+    "department": "Human Resources",
+    "time": "4 hours ago"
+  },
+  {
+    "id": 13,
+    "employee": "Karan Malhotra",
+    "activity": "New employee added",
+    "department": "Development",
+    "time": "5 hours ago"
+  },
+  {
+    "id": 14,
+    "employee": "Riya Saxena",
+    "activity": "Leave approved",
+    "department": "Design",
+    "time": "6 hours ago"
+  },
+  {
+    "id": 15,
+    "employee": "Mohit Agarwal",
+    "activity": "Attendance marked",
+    "department": "Sales",
+    "time": "7 hours ago"
+  },
+  {
+    "id": 16,
+    "employee": "Simran Kaur",
+    "activity": "Profile updated",
+    "department": "Finance",
+    "time": "8 hours ago"
+  },
+  {
+    "id": 17,
+    "employee": "Aditya Roy",
+    "activity": "Leave requested",
+    "department": "Development",
+    "time": "9 hours ago"
+  },
+  {
+    "id": 18,
+    "employee": "Ishita Jain",
+    "activity": "Leave approved",
+    "department": "Marketing",
+    "time": "10 hours ago"
+  },
+  {
+    "id": 19,
+    "employee": "Nikhil Singh",
+    "activity": "Profile updated",
+    "department": "Sales",
+    "time": "Yesterday"
+  },
+  {
+    "id": 20,
+    "employee": "Meera Sharma",
+    "activity": "Attendance marked",
+    "department": "Human Resources",
+    "time": "Yesterday"
+  }
+]

@@ -211,6 +211,7 @@ switch (sortOption) {
 
   return (
     <>
+<<<<<<< HEAD
       <main className="employee-content">
         <div className="employee-header">
           <h1>Employees</h1>
@@ -224,6 +225,24 @@ switch (sortOption) {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 fullWidth
               />
+=======
+          <main className="employee-content">
+            <div className="employee-header">
+              <h1>Employees</h1>
+              <div className="employee-toolbar">
+                <div className="search-box">
+                  <Input type="text" placeholder="Search employee..." />
+                </div>
+                <div className="toolbar-buttons">
+                  <Button text="Filter" />
+                  <Button text="Sort" />
+                  <Button
+                    text="+ Add Employee"
+                    onClick={() => navigate("/add-employee")}
+                  />
+                </div>
+              </div>
+>>>>>>> 96442f6ed2aea2896eb4c255b8dedd9b22fa9312
             </div>
             <div className="toolbar-buttons">
               <FormControl size="small" sx={{ minwidth: 180 }}>
@@ -274,6 +293,7 @@ switch (sortOption) {
                 +Add Employee
               </MuiButton>
             </div>
+<<<<<<< HEAD
           </div>
         </div>
         <div
@@ -315,6 +335,9 @@ switch (sortOption) {
           />
         </div>
       </main>
+=======
+          </main>
+>>>>>>> 96442f6ed2aea2896eb4c255b8dedd9b22fa9312
     </>
   );
 }

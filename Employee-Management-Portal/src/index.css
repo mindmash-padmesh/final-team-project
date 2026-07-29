@@ -19,7 +19,15 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
+  min-width: 320px;
   background-color: var(--background-color);
   color: var(--text-primary);
   font-family: Arial, sans-serif;
