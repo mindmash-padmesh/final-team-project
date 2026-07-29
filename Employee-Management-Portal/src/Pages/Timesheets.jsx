@@ -1,6 +1,7 @@
 import { useEffect,useState } from "react";
 import "../Styles/Timesheets.css";
 import Card from "../Component/Card";
+import Modal from "../Component/Modal";
 import { DataGrid } from '@mui/x-data-grid';
 import { FiEdit2,FiTrash2,FiUsers,FiClock,FiTrendingUp,FiCalendar } from "react-icons/fi";
 
@@ -14,7 +15,7 @@ function Timesheets(){
     date:"",
     checkIn:"",
     checkOut:"",
-    status:"Present",
+    status:"",
   });
   const [editingId,setEditingId]=useState(null);
   const[search,setSearch]=useState("");
@@ -54,7 +55,7 @@ function Timesheets(){
       date:"",
       checkIn:"",
       checkOut:"",
-      status:"Present",
+      status:"",
     });
   };
   const handleEdit=(item)=>{
@@ -67,12 +68,23 @@ function Timesheets(){
       status:item.status,
     });
   };
+  const[showModal, setShowModal]=useState(false);
+  const[deleteId,setDeleteId]=useState(null);
+
+
   const handleDelete = (id) => {
-    if (window.confirm("Delete this timesheet?")) {
-      setTimesheets(
-        timesheets.filter((item) => item.id !== id)
-      );
-    }
+    setDeleteId(id);
+    setShowModal(true);
+  };
+
+  const confirmDelete=()=>{
+    setTimesheets(timesheets.filter((item)=>item.id !== deleteId));
+    setShowModal(false);
+    setDeleteId(null);
+  };
+  const closeModal=()=>{
+    setShowModal(false);
+    setDeleteId(null);
   };
   const filtered=timesheets.filter((item)=>
     item.employee.toLowerCase().includes(search.toLowerCase())
@@ -129,10 +141,10 @@ const column=[
     flex:1.2,
     sortable:false,
     renderCell:(params)=>(
-      <>
+      <div className="btn">
       <button className="edit-btn" onClick={()=>handleEdit(params.row)}><FiEdit2/></button>
       <button className="delete-btn"onClick={()=>handleDelete(params.row.id)}><FiTrash2/></button>
-      </>
+      </div>
     ),
   },
 ];
@@ -159,10 +171,10 @@ return(
       <input type="time"name="checkIn"value={formData.checkIn} onChange={handleChange} required/>
       <input type="time"name="checkOut" value={formData.checkOut} onChange={handleChange} required/>
       <select name="status" value={formData.status} onChange={handleChange} required>
-        <option value="" disabled>Select Status</option>
-        <option>Present</option>
-        <option>Leave</option>
-        <option>Halfday</option>
+        <option value="" disabled> Select Status</option>
+        <option value="Present">Present</option>
+        <option value="Leave">Leave</option>
+        <option value="Halfday">Half Day</option>
       </select>
       <button type="submit">{editingId?"Update Timesheet":"Add Timesheet"}</button>
     </form>
@@ -175,6 +187,9 @@ return(
       <DataGrid rows={filtered} columns={column} pageSizeOptions={[5, 10, 20]} initialState={{ pagination: { paginationModel: { page: 0, pageSize: 5,},},}} disableRowSelectionOnClick />
     </div>
   </div>
+  {showModal&&(
+    <Modal title="Delete Timesheet" message="Are you sure you want to delete this timesheet?" confirmText="Delete" onConfirm={confirmDelete} onClose={closeModal}/>
+  )}
   </div>
 )
 }

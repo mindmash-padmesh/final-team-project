@@ -9,6 +9,8 @@ import {
 } from "react-icons/fi";
 
 import "../Styles/Home.css";
+import Navbar from "../Component/Navbar";
+import Footer from "../Component/Footer";
 
 function Home() {
   const navigate = useNavigate();
@@ -39,6 +41,8 @@ function Home() {
   };
 
   return (
+    <>
+    <Navbar/>
     <main className="home-page">
       <section className="home-hero">
         <div className="hero-content">
@@ -89,6 +93,8 @@ function Home() {
         </div>
       </section>
     </main>
+    <Footer/>
+    </>
   );
 }
 
