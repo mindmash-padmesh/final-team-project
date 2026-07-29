@@ -1,14 +1,9 @@
-/* ==========================================
-   Employees Layout
-========================================== */
-
 .page-layout {
     display: flex;
     min-height: 100vh;
     background: var(--background-color);
 }
 
-/* Sidebar ko respect karega */
 .main-section {
     margin-left: 250px;
     width: calc(100% - 250px);
@@ -23,25 +18,14 @@
     padding: 25px;
     background: var(--background-color);
 }
-
-/* ==========================================
-   Header
-========================================== */
-
 .employee-header {
     margin-bottom: 25px;
 }
-
 .employee-header h1 {
     font-size: 32px;
     color: var(--text-primary);
     margin-bottom: 25px;
 }
-
-/* ==========================================
-   Toolbar
-========================================== */
-
 .employee-toolbar {
     display: flex;
     justify-content: space-between;
@@ -52,98 +36,64 @@
 
 .search-box {
     flex: 1;
-    min-width: 280px;
-    max-width: 380px;
-}
-
-.search-box .input {
-    width: 100%;
+    min-width: 300px;
+    max-width: 420px;
 }
 
 .toolbar-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
     flex-wrap: wrap;
 }
-
-/* ==========================================
-   Table
-========================================== */
 
 .employee-table-container {
     width: 100%;
     background: var(--white);
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 30px;
-    overflow-x: auto;
+    overflow: hidden;
     border: 1px solid var(--border-color);
 }
-
-.employee-table {
-    width: 100%;
-    min-width: 900px;
-    border-collapse: collapse;
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
 }
-
-.employee-table th {
-    padding: 18px;
-    text-align: left;
-    background: #f8fafc;
-    color: var(--text-primary);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.employee-table td {
-    padding: 18px;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-secondary);
-}
-
-.employee-table tbody tr:hover {
-    background: #f8fafc;
-}
-
-/* ==========================================
-   Responsive
-========================================== */
 
 @media (max-width:768px) {
 
-    /* Sidebar hidden */
-    .sidebar{
-        display:none;
+    .sidebar {
+        display: none;
     }
-
-    .main-section{
-        margin-left:0;
-        width:100%;
+    .main-section {
+        margin-left: 0;
+        width: 100%;
     }
-
-    .employee-content{
-        padding:20px;
+    .employee-content {
+        padding: 20px;
     }
-
-    .employee-toolbar{
-        flex-direction:column;
-        align-items:stretch;
+    .employee-header h1 {
+        font-size: 28px;
+        text-align: center;
     }
-
-    .search-box{
-        max-width:100%;
+    .employee-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
     }
-
-    .toolbar-buttons{
-        width:100%;
-        justify-content:space-between;
+    .search-box {
+        width: 100%;
+        max-width: 100%;
     }
-
-    .toolbar-buttons button{
-        flex:1;
+    .toolbar-buttons {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
     }
-
-    .employee-table{
-        min-width:850px;
+    .employee-table-container {
+        height: 500px;
     }
-
 }
