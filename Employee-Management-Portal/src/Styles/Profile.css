@@ -12,6 +12,12 @@
   text-align: center;
 }
 
+.edit-pro-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .edit-profile-btn {
   padding: 10px 18px;
   border: none;
@@ -95,15 +101,11 @@
   font-weight: 600;
 }
 
-.validation-error{
+.error-validation {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: center;
   color: var(--danger-color);
-  margin-top: 25px;
-}
-
-.edit-btn{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @media (max-width: 768px) {
