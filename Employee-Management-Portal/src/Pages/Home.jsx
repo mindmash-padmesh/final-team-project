@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import '../Styles/Home.css';
 import { FiArrowRight, FiCalendar, FiClock, FiUsers,} from "react-icons/fi";
+import Navbar from "../Component/Navbar";
+import Footer from "../Component/Footer";
 
 function Home() {
   const navigate = useNavigate();
