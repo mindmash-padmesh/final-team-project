@@ -15,7 +15,6 @@
 }
 
 .summary-card{
-    text-align: center;
     display: flex;
     align-items: center;
     gap: 18px;
@@ -126,17 +125,6 @@
     }
     .summary-card{
         flex-direction: row;
-    }
-    .timesheet-form{
-        grid-template-columns: 1fr;
-    }
-    .card-icon{
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-    }
-    .card-content h2{
-        font-size: 22px;
     }
     .MuiDataGrid-root{
         font-size: 13px;
