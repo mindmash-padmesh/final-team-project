@@ -118,6 +118,9 @@
     .timesheets-page{
         padding:15px;
     }
+    .timesheets-page h2{
+        font-size:30px;
+    }
     .summaryCards{
         display: grid;
     }
