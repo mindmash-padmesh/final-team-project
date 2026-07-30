@@ -56,11 +56,29 @@
     overflow: hidden;
     border: 1px solid var(--border-color);
 }
-.action-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
+.action-btn {
+  background-color: var(--primary-color) !important;
+  color: var(--white) !important;
+  margin: 0 4px !important;
+  border-radius: 8px !important;
+  width: 40px !important;
+  height: 40px !important;
+  transition: all 0.3s ease !important;
+}
+
+.action-btn:hover {
+  background-color: var(--secondary-color) !important;
+}
+
+.view-btn:hover{
+    background-color: var(--secondary-color) !important;
+}
+
+.edit-btn:hover{
+    background-color: var(--success-color) !important;
+}
+.delete-btn:hover {
+  background-color: var(--danger-color) !important;
 }
 
 

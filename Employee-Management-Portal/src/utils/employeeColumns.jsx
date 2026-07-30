@@ -52,7 +52,7 @@ const employeeColumns = (navigate, openDeleteModal) => [
       <>
         <Tooltip title="View">
           <IconButton
-            color="primary"
+            className="action-btn view-btn"
             onClick={() => navigate(`/employees/${params.row.id}`)}
           >
             <VisibilityIcon />
@@ -61,7 +61,7 @@ const employeeColumns = (navigate, openDeleteModal) => [
 
         <Tooltip title="Edit">
           <IconButton
-            color="success"
+            className="action-btn edit-btn"
             onClick={() => navigate(`/edit-employee/${params.row.id}`)}
           >
             <EditIcon />
@@ -70,7 +70,7 @@ const employeeColumns = (navigate, openDeleteModal) => [
 
         <Tooltip title="Delete">
           <IconButton
-            color="error"
+            className="action-btn delete-btn"
             onClick={() => openDeleteModal(params.row.id)}
           >
             <DeleteIcon />
