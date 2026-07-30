@@ -1,9 +1,9 @@
 .navbar {
   width: 100%;
-  height: 80px;
-  padding: 0 30px;
+  height: 5rem;
+  padding: 0 1.875rem;
   background-color: var(--white);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: .0625rem solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,8 +21,8 @@
 }
 
 .logo img {
-  width: 58px;
-  height: 58px;
+  width: 3.625rem;
+  height: 3.625rem;
   object-fit: contain;
 }
 .profile-btn, .menu-btn{
@@ -33,16 +33,16 @@
 }
 
 .profile-btn {
-  gap: 8px;
-  padding: 10px 14px;
+  gap: .5rem;
+  padding: .625rem .875rem;
   border-radius: 50%;
-  font-size: 1rem;
+  font-size: 16px;
   color: var(--primary-color);
 }
 
 .profile-btn svg,
 .menu-btn svg {
-  font-size: 1.4rem;
+  font-size: 22.4px;
 }
 
 .profile-btn:hover,
@@ -53,8 +53,8 @@
 
 .menu-btn {
   display: none;
-  padding: 8px;
-  border-radius: 6px;
+  padding: .5rem;
+  border-radius: .375rem;
 }
 
 .profile-menu {
@@ -62,8 +62,8 @@
 }
 
 .profile-btn {
-  width: 42px;
-  height: 42px;
+  width: 2.625rem;
+  height: 2.625rem;
   border: none;
   border-radius: 50%;
   background-color: #eff6ff;
@@ -75,7 +75,7 @@
 }
 
 .profile-btn svg {
-  font-size: 1.4rem;
+  font-size: 22.4px;
 }
 
 .profile-btn:hover {
@@ -84,28 +84,28 @@
 
 .profile-dropdown {
   position: absolute;
-  top: 52px;
+  top: 3.25rem;
   right: 0;
-  width: 150px;
-  padding: 8px;
+  width: 9.375rem;
+  padding: .5rem;
   background-color: var(--white);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border: .0625rem solid var(--border-color);
+  border-radius: .5rem;
+  box-shadow: 0 .5rem 1.5625rem rgba(0, 0, 0, 0.12);
   z-index: 200;
 }
 
 .dropdown-item {
   width: 100%;
-  padding: 10px 12px;
+  padding: .625rem .75rem;
   border: none;
-  border-radius: 6px;
+  border-radius: .375rem;
   background: transparent;
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
+  gap: .625rem;
+  font-size: 15.2px;
   cursor: pointer;
 }
 
@@ -124,23 +124,23 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .navbar {
-    height: 64px;
-    padding: 0 16px;
+    height: 4rem;
+    padding: 0 1rem;
   }
   .menu-btn {
     display: flex;
   }
   .logo img {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   .logo h2 {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .logo h2 {
     display: none;
   }
