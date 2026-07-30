@@ -76,6 +76,7 @@ function Profile() {
   return (
     <main className="profile-container">
         <h1>My Profile</h1>
+        {error && <p className="error-validation">{error} </p>}
       <Card className="profile-card">
         <h2> <FaUser/> &nbsp;
           {isEditing ? ( <Input type="text" name="name" value={profile.name} onChange={handleChange}/> ) : ( profile.name )}
@@ -96,8 +97,7 @@ function Profile() {
           <strong> <FaPhone /> &nbsp; Phone:</strong>
           {isEditing ? ( <Input type="tel" name="phone" value={profile.phone} onChange={handleChange} /> ) : ( profile.phone )}
         </p>
-        {error && (<p className="validation-error" role="alert">{error} </p>)}
-        <div className="edit-btn">
+        <div className="edit-pro-btn">
           <Button text={isEditing ? "Save Profile" : "Edit Profile"} onClick={handleEdit} className="edit-profile-btn" />
         </div>
       </Card>

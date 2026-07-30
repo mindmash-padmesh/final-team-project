@@ -29,7 +29,7 @@
 
 .apply-leave-form .group label {
   color: var(--text-primary, #1f2937);
-  font-size: 14.4px;
+  font-size: .9rem;
   font-weight: 600;
 }
 
@@ -44,7 +44,7 @@
   border-radius: .4375rem;
   outline: none;
   font-family: inherit;
-  font-size: 15.2px;
+  font-size: .95rem;
   transition: 0.2s ease;
 }
 
@@ -84,7 +84,9 @@
 
 .validation-error{
   color: var(--danger-color);
-  margin-top: 1.5625rem;
+  width: 100%;
+  text-align: center;
+  margin:1.5rem;
 }
 
 @media (max-width: 48rem) {
@@ -107,7 +109,7 @@
   }
 
   .apply-leave-form h2 {
-    font-size: 19.2px;
+    font-size: 1.2rem;
   }
 
   .apply-leave-form button {

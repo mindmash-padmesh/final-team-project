@@ -45,6 +45,7 @@ function ApplyLeave({ onApply }) {
   return (
     <form className="apply-leave-form" onSubmit={handleSubmit}>
       <h2>Apply for Leave</h2>
+       {error && ( <p className="validation-error" > {error} </p> )}
       <div>
         <div className="group">
           <label htmlFor="employee">Employee Name</label>
@@ -72,7 +73,6 @@ function ApplyLeave({ onApply }) {
           <Input type="number"  id="days" name="days" min="1" value={formData.days} onChange={handleChange} required placeholder="Enter days" />
         </div>
       </div>
-      {error && ( <p className="validation-error" role="alert"> {error} </p> )}
       <Button text="Apply Leave" type="submit" />
     </form>
   );
