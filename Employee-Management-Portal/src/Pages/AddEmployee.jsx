@@ -90,7 +90,7 @@ function AddEmployee() {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             handleReset={handleReset}
-            navigate={navigate}
+            onCancel={()=>navigate("/employees")}
             submitText="Add Employee"
           />
           {showSuccessModal && (

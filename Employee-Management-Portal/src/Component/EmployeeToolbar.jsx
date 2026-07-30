@@ -75,7 +75,7 @@ function EmployeeToolbar({
               px: 2,
             }}
           >
-            +Add Employee
+            Add Employee
           </MuiButton>
         </div>
       </div>

@@ -113,7 +113,7 @@ function EditEmployee() {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             handleReset={handleReset}
-            navigate={navigate}
+            onCancel={() => navigate("/employees")}
             submitText="Add Employee"
           />
         </div>
