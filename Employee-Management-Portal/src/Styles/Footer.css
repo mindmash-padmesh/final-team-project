@@ -1,7 +1,12 @@
 .app-footer {
   width: 100%;
+  display: flex;
   padding: 15px 30px;
   background-color: var(--white);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
   border-top: 1px solid var(--border-color);
   color: var(--text-primary);
   text-align: center;
@@ -20,9 +25,5 @@
 @media (max-width: 768px) {
   .app-footer {
     padding: 15px;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 6px;
   }
 }

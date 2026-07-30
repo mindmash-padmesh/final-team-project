@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { MdAccessTime, MdBeachAccess, MdCalendarToday, MdDashboard, MdPeople, MdPerson} from "react-icons/md";
-import "../Styles/SideBar.css";
+import "../Styles/Sidebar.css";
 
 function SideBar() {
   const menuItems = [
