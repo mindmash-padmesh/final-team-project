@@ -1,4 +1,45 @@
+.login-page {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
+.login-page  .brand-content {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem;
+  background:linear-gradient(145deg,rgb(83, 83, 84),rgb(171, 171, 175),rgb(83, 83, 84));
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.login-logo {
+  width: 12rem;
+  height: 12rem;
+  object-fit: contain;
+  animation: 7s ease-in-out 0s unset;
+}
+
+.login-page  .brand-content h1 {
+  max-width: 35rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.login-page > .brand-content p {
+  max-width: 32rem;
+  color:#000;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 600;
+}
 
 .login,.login form{
   display: flex;
@@ -12,17 +53,8 @@
   flex: 1;
   min-height: 0;
   padding: 2.5rem .9375rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 3.25rem;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--white);
-  background: linear-gradient(135deg, #4388b6, #4d71df);
 }
 
 .login > div{
@@ -82,15 +114,31 @@
 }
 
 .create-acc{
-    margin-top: 1.25rem;
-    color: var(--text-secondary);
+  margin-top: 1.25rem;
+  color: var(--text-secondary);
 }
 
 .create-acc span{
-    color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.error-validation{
+  margin: 1.5rem;
+  color: var(--danger-color);
+  text-align: center;
+  width: 100%;
 }
 
 @media (max-width: 48rem) {
+
+  .login-page{
+    display: block;
+  }
+
+  .login-page .brand-content{
+    display: none;
+  }
+
   .login {
     padding: .9375rem;
   }
