@@ -1,4 +1,5 @@
 import "../Styles/Modal.css";
+import Button from "./Button";
 
 function Modal({ title, message, confirmText = "Confirm", confirmColor = "danger", onConfirm, onClose,}) {
   return (
@@ -7,9 +8,9 @@ function Modal({ title, message, confirmText = "Confirm", confirmColor = "danger
         <h2>{title}</h2>
         <p>{message}</p>
         <div className="modal-actions">
-          <button className="cancel-btn" type="button" onClick={onClose} > Cancel </button>
-          <button className={`confirm-btn ${confirmColor}`} type="button" onClick={onConfirm} > {confirmText}
-          </button>
+          <Button className="cancel-btn" type="button" onClick={onClose} > Cancel </Button>
+          <Button className={`confirm-btn ${confirmColor}`} type="button" onClick={onConfirm} > {confirmText}
+          </Button>
         </div>
       </div>
     </div>

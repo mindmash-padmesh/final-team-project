@@ -52,7 +52,6 @@
     gap: 18px;
 }
 
-.attendance-form input,
 .attendance-form select{
     width:100%;
     padding: 12px;
@@ -63,27 +62,8 @@
     transition: 0.3s;
 }
 
-.attendance-form input:focus,
 .attendance-form section:focus{
     border-color:var(--primary-color);
-}
-
-.attendance-form button{
-    grid-column: span 3;
-    justify-self: flex-start;
-    padding:12px 25px;
-    background: var(--primary-color);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.attendance-form button:hover{
-    background-color: var(--secondary-color);
 }
 
 .table-container{
@@ -128,7 +108,10 @@
         grid-column: span 1;
         width: 100%;
     }
-
+    .summary-cards{
+        display: grid;
+        grid-template-columns:repeat(2, 1fr);
+    }
     .summary-card{
         width: 100%;
     }
