@@ -1,16 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import '../Styles/Home.css';
-
-import {
-  FiArrowRight,
-  FiCalendar,
-  FiClock,
-  FiUsers,
-} from "react-icons/fi";
-
-import "../Styles/Home.css";
+import { FiArrowRight, FiCalendar, FiClock, FiUsers,} from "react-icons/fi";
 import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
+import Button from "../Component/Button";
+import Card from "../Component/Card";
 
 function Home() {
   const navigate = useNavigate();
@@ -59,14 +53,7 @@ function Home() {
             attendance, leaves and timesheets from one place.
           </p>
 
-          <button
-            className="home-login-btn"
-            type="button"
-            onClick={goToLogin}
-          >
-            Login to Dashboard
-            <FiArrowRight />
-          </button>
+          <Button className="home-login-btn" type="button" onClick={goToLogin} > Login to Dashboard <FiArrowRight /> </Button>
         </div>
       </section>
 
@@ -81,14 +68,14 @@ function Home() {
 
         <div className="features-grid">
           {features.map((feature) => (
-            <div className="feature-card" key={feature.title}>
+            <Card className="feature-card" key={feature.title}>
               <div className="feature-icon">
                 {feature.icon}
               </div>
 
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
-            </div>
+            </Card>
           ))}
         </div>
       </section>

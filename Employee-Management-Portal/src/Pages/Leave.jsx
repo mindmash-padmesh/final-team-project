@@ -4,6 +4,7 @@ import {EventNote, AccessTime, CheckCircle, Cancel} from '@mui/icons-material';
 import LeaveList from '../Component/LeaveList';
 import leavesData from '../utils/leavesData.json';
 import { useState } from 'react';
+import ApplyLeave from '../Component/ApplyLeave';
 
 function Leave(){
 
@@ -13,7 +14,7 @@ function Leave(){
       ? JSON.parse(savedLeaves)
       : leavesData;
     });
-
+    
     const pendingLeaves=rows.filter((leaves)=>leaves.status==="Pending").length;
 
     const approvedLeaves=rows.filter((leaves)=>leaves.status==="Approved").length;
@@ -47,7 +48,25 @@ function Leave(){
     },
   ];
 
-   return(<>
+  const onApply = (formData) => {
+    const newLeave = {
+      ...formData,
+      id: Date.now(),
+      days: Number(formData.days),
+      status: "Pending",
+    };
+
+    setRows((previousRows) => {
+      const updatedRows = [newLeave, ...previousRows];
+      localStorage.setItem(
+        "leaves",
+        JSON.stringify(updatedRows)
+      );
+      return updatedRows;
+    });
+  };
+
+  return(<>
     <Box sx={{padding:3}} >
         <Typography variant='h4' sx={{marginBottom:3, fontWeight:"600"}}>Leave Management</Typography>
         <Box sx={{display:"flex", gap:2, flexWrap:"wrap"}}>
@@ -59,10 +78,11 @@ function Leave(){
                           color={leave.color} 
                 />   ))}
         </Box>
+        <ApplyLeave onApply={onApply} />
         <LeaveList rows={rows} setRows={setRows} />
     </Box>
     </>
-   )
+  )
 }
 
 export default Leave;

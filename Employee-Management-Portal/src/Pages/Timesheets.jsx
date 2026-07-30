@@ -4,6 +4,8 @@ import Card from "../Component/Card";
 import Modal from "../Component/Modal";
 import { DataGrid } from '@mui/x-data-grid';
 import { FiEdit2,FiTrash2,FiUsers,FiClock,FiTrendingUp,FiCalendar } from "react-icons/fi";
+import Input from "../Component/Input";
+import Button from "../Component/Button";
 
 function Timesheets(){
   const[timesheets,setTimesheets]=useState(()=>{
@@ -109,41 +111,48 @@ const column=[
     field:"employee",
     headerName:"Employee",
     flex:1,
+    minWidth:180,
   },
   {
     field:"date",
     headerName:"Date",
     flex:1,
+    minWidth:140,
   },
   {
     field:"checkIn",
     headerName:"Check In",
     flex:1,
+    minWidth:130,
   },
   {
     field: "checkOut",
     headerName: "Check Out",
     flex: 1,
+    minWidth:130,
   },
   {
     field: "hours",
     headerName: "Hours",
     flex: 1,
+    minWidth:100,
   },
   {
     field: "status",
     headerName: "Status",
     flex: 1,
+    minWidth:140,
   },
   {
     field:"actions",
     headerName:"Actions",
     flex:1.2,
+    minWidth:170,
     sortable:false,
     renderCell:(params)=>(
       <div className="btn">
-      <button className="edit-btn" onClick={()=>handleEdit(params.row)}><FiEdit2/></button>
-      <button className="delete-btn"onClick={()=>handleDelete(params.row.id)}><FiTrash2/></button>
+      <Button className="edit-btn" onClick={()=>handleEdit(params.row)}><FiEdit2/></Button>
+      <Button className="delete-btn"onClick={()=>handleDelete(params.row.id)}><FiTrash2/></Button>
       </div>
     ),
   },
@@ -152,7 +161,7 @@ const column=[
 return(
   <div className="timesheets-page">
     <h2>Employee Timesheets</h2>
-    <div className="summary-cards">
+    <div className="summaryCards">
         {summaryCards.map((card, index) => (
           <Card key={index} className="summary-card">
             <div className="card-icon">
@@ -166,17 +175,17 @@ return(
       ))}
     </div>
     <form onSubmit={handleSubmit}className="timesheet-form">
-      <input type="text"name="employee"placeholder="Employee Name" value={formData.employee} onChange={handleChange} required/>
-      <input type="date" name="date" value={formData.date}onChange={handleChange}required/>
-      <input type="time"name="checkIn"value={formData.checkIn} onChange={handleChange} required/>
-      <input type="time"name="checkOut" value={formData.checkOut} onChange={handleChange} required/>
+      <Input type="text"name="employee"placeholder="Employee Name" value={formData.employee} onChange={handleChange} required/>
+      <Input intype="date" name="date" value={formData.date}onChange={handleChange}required/>
+      <Input type="time"name="checkIn"value={formData.checkIn} onChange={handleChange} required/>
+      <Input type="time"name="checkOut" value={formData.checkOut} onChange={handleChange} required/>
       <select name="status" value={formData.status} onChange={handleChange} required>
         <option value="" disabled> Select Status</option>
         <option value="Present">Present</option>
         <option value="Leave">Leave</option>
         <option value="Halfday">Half Day</option>
       </select>
-      <button type="submit">{editingId?"Update Timesheet":"Add Timesheet"}</button>
+      <Button type="submit">{editingId?"Update Timesheet":"Add Timesheet"}</Button>
     </form>
   <div style={{height:500,
     width:"100%",

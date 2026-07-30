@@ -1,20 +1,37 @@
 import "../Styles/Modal.css";
+import Button from "./Button";
 
-function Modal({ title, message, confirmText = "Confirm", onConfirm, onClose, showCancel=true,}) {
+function Modal({
+  title,
+  message,
+  confirmText = "Confirm",
+  confirmColor = "danger",
+  onConfirm,
+  onClose,
+}) {
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        onClick={(event) => event.stopPropagation()}
+      >
         <h2>{title}</h2>
         <p>{message}</p>
         <div className="modal-actions">
-          {showCancel &&(
-          <button className="cancel-btn" onClick={onClose} >
-            Cancel
-          </button>
-            )}
-          <button className="confirm-btn" onClick={onConfirm} >
+          <Button className="cancel-btn" type="button" onClick={onClose}>
+            {" "}
+            Cancel{" "}
+          </Button>
+          <Button
+            className={`confirm-btn ${confirmColor}`}
+            type="button"
+            onClick={onConfirm}
+          >
+            {" "}
             {confirmText}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

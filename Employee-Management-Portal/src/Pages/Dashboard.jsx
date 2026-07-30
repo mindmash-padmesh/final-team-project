@@ -2,7 +2,6 @@ import '../Styles/Dashboard.css';
 import { MdAccessTime, MdBeachAccess, MdCheckCircle, MdPeople, MdPersonOff } from 'react-icons/md';
 import Card from '../Component/Card';
 import dashboardData from '../utils/dashboardData.json';
-import recentActivities from '../utils/recentActivities.json';
 import RecentActivities from '../Component/RecentActivities';
 
 function Dashboard(){
@@ -26,13 +25,13 @@ function Dashboard(){
             </div>
             <section className='dashboard-stats'>
               {dashboardData.map((item) => (
-                <div key={item.title} className={`dashboard-stat-card ${item.className}`}>
-                    <div className="stat-icon">{iconMap[item.icon]}</div>
-                    <div className="stat-information">
-                      <p>{item.title}</p>
-                      <h2>{item.value}</h2>
-                    </div>
-                </div>
+                <Card key={item.title} className={`dashboard-stat-card ${item.className}`}>
+                   <div className="stat-icon">{iconMap[item.icon]}</div>
+                   <div className="stat-information">
+                   <p>{item.title}</p>
+                   <h2>{item.value}</h2>
+                  </div>
+                </Card>
               ))}
             </section>
             {/* <section className='recent-activities'>

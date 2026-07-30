@@ -1,7 +1,11 @@
 import {Box, Typography, Button, Chip} from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import Modal from './Modal';
+import {useState} from "react";
 
 function LeaveList({rows, setRows}){
+
+   const [confirmation, setConfirmation] = useState(null);
 
     const updateStatus=(id,status)=>{
         const updatedRows=rows.map((leave)=>{
@@ -19,6 +23,29 @@ function LeaveList({rows, setRows}){
           "leaves",
           JSON.stringify(updatedRows)
         );
+    };
+
+    const openConfirmation = (leave, status) => {
+      setConfirmation({
+      id: leave.id,
+      employee: leave.employee,
+      status,
+      });
+    };
+
+    const closeConfirmation = () => {
+      setConfirmation(null);
+    };
+
+    const confirmStatusUpdate = () => {
+      if (!confirmation) {
+        return;
+      }
+      updateStatus(
+        confirmation.id,
+        confirmation.status
+       );
+      closeConfirmation();
     };
 
     const column = [
@@ -94,14 +121,15 @@ function LeaveList({rows, setRows}){
             }
             return(
                 <Box>
-                    <Button variant='contained' size='small' color='success' sx={{marginRight:1}} onClick={()=>updateStatus(params.row.id,"Approved")}>Approve</Button>
-                    <Button variant='contained' size='small' color='error' onClick={()=>updateStatus(params.row.id,"Rejected")}>Reject</Button>
+                    <Button variant='contained' size='small' color='success' sx={{marginRight:1}}onClick={() => openConfirmation(params.row,"Approved")}>Approve</Button>
+                    <Button variant='contained' size='small' color='error' onClick={() => openConfirmation(params.row, "Rejected" )}>Reject</Button>
                 </Box>
             )
         }
     }]
 
     return(
+      <>
         <Box sx={{backgroundColor:'#fff', padding:2, marginTop:3, width:"100%", borderRadius:2, boxShadow:3}}>
             <Typography variant='h5' sx={{fontWeight:600, marginBottom:2}}>Leave Requests</Typography>
             <DataGrid 
@@ -109,8 +137,44 @@ function LeaveList({rows, setRows}){
                columns={column}
                initialState={{ pagination: { paginationModel: { pageSize: 5, page: 0}}}} 
                pageSizeOptions={[5, 10]} disableRowSelectionOnClick
+               showToolbar
+
+               sx={{
+                 "& .MuiDataGrid-columnHeader":{
+                  backgroundColor:"var(--primary-color)",
+                  color:"var(--white)",
+                  fontSize:"16px",
+                 }
+               }}
             />
         </Box>
+        {confirmation && (
+      <Modal
+        title={
+          confirmation.status === "Approved"
+            ? "Approve Leave Request"
+            : "Reject Leave Request"
+        }
+        message={`Are you sure you want to ${
+          confirmation.status === "Approved"
+            ? "approve"
+            : "reject"
+        } ${confirmation.employee}'s leave request?`}
+        confirmText={
+          confirmation.status === "Approved"
+            ? "Approve"
+            : "Reject"
+        }
+        confirmColor={
+          confirmation.status === "Approved"
+            ? "success"
+            : "danger"
+        }
+        onConfirm={confirmStatusUpdate}
+        onClose={closeConfirmation}
+      />
+    )}
+      </>
     )
 }
 

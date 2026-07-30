@@ -1,52 +1,90 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
+  padding: 1.25rem;
+  background-color: rgba(15, 23, 42, 0.55);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 1500;
 }
 
 .modal {
-  width: 90%;
-  max-width: 400px;
-  background-color: #ffffff;
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 26.25rem;
+  padding: 1.625rem;
+  border-radius: .75rem;
+  background-color: var(--white);
+  box-shadow: 0 1.25rem 2.8125rem rgba(15, 23, 42, 0.25);
+  animation: open-modal 0.2s ease;
 }
 
 .modal h2 {
-  color: #1f2937;
-  margin-bottom: 12px;
+  margin-bottom: .75rem;
+  color: var(--text-primary);
+  font-size: 21.6px;
 }
 
 .modal p {
-  color: #6b7280;
-  margin-bottom: 24px;
+  margin-bottom: 1.5625rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: .625rem;
 }
 
 .modal-actions button {
-  padding: 10px 18px;
-  border-radius: 6px;
+  padding: .625rem 1.125rem;
+  border-radius: .4375rem;
+  font-size: 14.4px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .cancel-btn {
-  background-color: #ffffff;
-  color: #1f2937;
-  border: 1px solid #e5e7eb;
+  border: .0625rem solid var(--border-color);
+  background-color: var(--white);
+  color: var(--text-primary);
+}
+
+.cancel-btn:hover {
+  background-color: #f1f5f9;
 }
 
 .confirm-btn {
-  background-color: #ef4444;
-  color: #ffffff;
   border: none;
+  color: var(--white);
+}
+
+.confirm-btn.success {
+  background-color: var(--success-color);
+}
+
+.confirm-btn.success:hover {
+  background-color: #16a34a;
+}
+
+.confirm-btn.danger {
+  background-color: var(--danger-color);
+}
+
+.confirm-btn.danger:hover {
+  background-color: #dc2626;
+}
+
+@keyframes open-modal {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

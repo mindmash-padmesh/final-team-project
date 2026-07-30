@@ -1,6 +1,6 @@
 import {Box, Card, CardContent, Typography} from '@mui/material';
 
-function LeaveCard({title,value,icon,color}){
+function IconCard({title,value,icon,color}){
     return(
         <Card sx={{flex:1, minWidth:"200px", boxShadow:2, borderRadius:2}}>
             <CardContent sx={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
@@ -27,4 +27,4 @@ function LeaveCard({title,value,icon,color}){
     )
 }
 
-export default LeaveCard;
+export default IconCard;

@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { DataGrid} from "@mui/x-data-grid";
 import Card from "../Component/Card";
 import "../Styles/Attendance.css";
+import Modal from "../Component/Modal";
+import Input from "../Component/Input";
+import Button from "../Component/Button";
 
 function Attendance(){
+    const[showModal,setShowModal]=useState(false);
     const [attendance, setAttendance] = useState(() => {
         const savedAttendance = localStorage.getItem("attendance");
         return savedAttendance ? JSON.parse(savedAttendance) : [];
@@ -32,6 +36,7 @@ function Attendance(){
             ...formData,
         };
         setAttendance((prev)=>[...prev,newAttendance]);
+        setShowModal(true);
         setFormData({
             employee:"",
             department:"",
@@ -69,25 +74,30 @@ function Attendance(){
             field:"employee",
             headerName:"Employee",
             flex:1.5,
+            minWidth:130,
         },
         {
             field:"department",
             headerName:"Department",
             flex:1,
+            minWidth:120,
         },
         {
             field:"checkIn",
             headerName:"Check In",
             flex:1.5,
+            minWidth:100,
         },
         {
             field:"checkOut",
             headerName:"Check Out",
             flex:1,
+            minWidth:100,
         },
         {
             field:"status",
             headerName:"Status",
+            minWidth:110,
             flex:1,
             renderCell:(params)=>{
                 return (
@@ -112,18 +122,18 @@ function Attendance(){
             </div>
             <div className="attendance-form-container">
                 <form className="attendance-form" onSubmit={handleSubmit}>
-                    <input type="text" name="employee" placeholder="Employee name" value={formData.employee} onChange={handleChange}required/>
-                    <input type="text" name="department" placeholder="Department name" value={formData.department} onChange={handleChange}required/>
-                    <input type="date" name="date"  value={formData.date} onChange={handleChange}required/>
-                    <input type="time" name="checkIn" value={formData.checkIn} onChange={handleChange}required/>
-                    <input type="time" name="checkOut"  value={formData.checkOut} onChange={handleChange}required/>
+                    <Input type="text" name="employee" placeholder="Employee name" value={formData.employee} onChange={handleChange}required/>
+                    <Input type="text" name="department" placeholder="Department name" value={formData.department} onChange={handleChange}required/>
+                    <Input type="date" name="date"  value={formData.date} onChange={handleChange}required/>
+                    <Input type="time" name="checkIn" value={formData.checkIn} onChange={handleChange}required/>
+                    <Input type="time" name="checkOut"  value={formData.checkOut} onChange={handleChange}required/>
                     <select name="status" value={formData.status} onChange={handleChange}required>
                         <option value="" disabled>Select status</option>
                         <option value="Present">Present</option>
                         <option value="Absent">Absent</option>
                         <option value="Leave">Leave</option>
                     </select>
-                    <button type="submit"> Add Attendance</button>
+                    <Button type="submit"> Add Attendance</Button>
                 </form>
             </div>
             <div className="table-container">
@@ -138,6 +148,10 @@ function Attendance(){
                     disableRowSelectionOnClick
                 />
             </div>
+            {showModal&&(
+                <Modal
+                title="Success" message="Attendance marked successfully !" confirmText="OK" confirmColor="success" onConfirm={()=>setShowModal(false)}onClose={()=>setShowModal(false)}/>
+            )}
         </div>
     )
 }

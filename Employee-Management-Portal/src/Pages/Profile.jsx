@@ -2,20 +2,47 @@ import { useState } from "react";
 import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaBuilding } from "react-icons/fa";
 import "../Styles/Profile.css";
 import Button from "../Component/Button";
+import Card from '../Component/Card';
+import Input from "../Component/Input";
 
 function Profile() {
-    const [profile, setProfile] = useState(() => {
-       const savedProfile = localStorage.getItem("profile");
-       return savedProfile
-       ? JSON.parse(savedProfile)
-       : {
-           name: "Emily Johnson",
-           email: "emily123@gmail.com",
-           phone: "+91 98765 43210",
-           role: "Administrator",
-           department: "Human Resources",
-        };
-    });
+  const [error, setError] = useState("");
+  const [profile, setProfile] = useState(() => {
+    const savedProfile = localStorage.getItem("profile");
+    return savedProfile
+      ? JSON.parse(savedProfile)
+      :{
+        name: "Emily Johnson",
+        email: "emily123@gmail.com",
+        phone: "+91 98765 43210",
+        role: "Administrator",
+        department: "Human Resources",
+      };
+  });
+
+  const validateProfile = () => {
+    const namePattern = /^[A-Za-z][A-Za-z\s.'-]{2,49}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const cleanedPhone = profile.phone.replace(/[\s-]/g,"");
+    const phonePattern = /^(\+91)?[6-9]\d{9}$/;
+
+    if (!namePattern.test(profile.name.trim())) {
+      return "Enter a valid name with at least 3 characters.";
+    }
+    if (!emailPattern.test(profile.email.trim())) {
+      return "Enter a valid email address.";
+    }
+    if (!phonePattern.test(cleanedPhone)) {
+      return "Enter a valid 10-digit Indian phone number.";
+    }
+    if (profile.role.trim().length < 2) {
+      return "Role must contain at least 2 characters.";
+    }
+    if (profile.department.trim().length < 2) {
+      return "Department must contain at least 2 characters.";
+    }
+    return "";
+  };
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -28,40 +55,52 @@ function Profile() {
   };
 
   const handleEdit = () => {
-    if (isEditing) {
-       localStorage.setItem( "profile",  JSON.stringify(profile) );
-      alert("Profile updated successfully!");
+    if (!isEditing) {
+      setError("");
+      setIsEditing(true);
+      return;
     }
-    setIsEditing(!isEditing);
+    const validationError = validateProfile();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    localStorage.setItem(
+      "profile",
+      JSON.stringify(profile)
+    );
+    setError("");
+    setIsEditing(false);
   };
 
   return (
     <main className="profile-container">
         <h1>My Profile</h1>
-      <div className="profile-card">
+      <Card className="profile-card">
         <h2> <FaUser/> &nbsp;
-          {isEditing ? ( <input type="text" name="name"  value={profile.name} onChange={handleChange} /> ) : ( profile.name )}
+          {isEditing ? ( <Input type="text" name="name" value={profile.name} onChange={handleChange}/> ) : ( profile.name )}
         </h2>
         <p>
           <strong> <FaEnvelope /> &nbsp; Email:</strong> 
-          {isEditing ? ( <input type="email" name="email" value={profile.email} onChange={handleChange} /> ) : ( profile.email )}
+          {isEditing ? ( <Input type="email" name="email" value={profile.email} onChange={handleChange}/> ) : ( profile.email )}
         </p>
         <p>
           <strong> <FaBriefcase/> &nbsp; Role:</strong>
-          {isEditing ? (  <input type="text" name="role" value={profile.role} onChange={handleChange} /> ) : ( profile.role )}
+          {isEditing ? (  <Input type="text" name="role" value={profile.role} onChange={handleChange}/> ) : ( profile.role )}
         </p>
         <p>
           <strong> <FaBuilding /> &nbsp; Department:</strong>
-          {isEditing ? ( <input type="text" name="department" value={profile.department} onChange={handleChange} /> ) : ( profile.department )}
+          {isEditing ? ( <Input type="text" name="department" value={profile.department} onChange={handleChange} /> ) : ( profile.department )}
         </p>
         <p>
           <strong> <FaPhone /> &nbsp; Phone:</strong>
-          {isEditing ? ( <input type="tel" name="phone" value={profile.phone} onChange={handleChange} /> ) : ( profile.phone )}
+          {isEditing ? ( <Input type="tel" name="phone" value={profile.phone} onChange={handleChange} /> ) : ( profile.phone )}
         </p>
+        {error && (<p className="validation-error" role="alert">{error} </p>)}
         <div className="edit-btn">
           <Button text={isEditing ? "Save Profile" : "Edit Profile"} onClick={handleEdit} className="edit-profile-btn" />
         </div>
-      </div>
+      </Card>
     </main>
   );
 }
