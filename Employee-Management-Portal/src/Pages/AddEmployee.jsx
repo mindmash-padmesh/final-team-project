@@ -1,4 +1,4 @@
-import { useState, useEffect, } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../Component/Input";
 import Button from "../Component/Button";
@@ -35,10 +35,13 @@ function AddEmployee() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationError = validateEmployee(employee);
+    console.log("Employee:", employee);
+    console.log("Validation Error:", validationError);
     if (validationError) {
       alert(validationError);
       return;
     }
+    console.log("Validation Passed");
     try {
       const response = await addEmployee(employee);
       console.log("Employee Added Successfully:", response);
