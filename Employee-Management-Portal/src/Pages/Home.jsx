@@ -31,6 +31,8 @@ function Home() {
   };
 
   return (
+    <>
+    <Navbar/>
     <main className="home-page">
       <section className="home-hero">
         <div className="hero-content">
@@ -74,6 +76,8 @@ function Home() {
         </div>
       </section>
     </main>
+    <Footer/>
+    </>
   );
 }
 

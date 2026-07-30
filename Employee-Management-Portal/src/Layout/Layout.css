@@ -5,6 +5,7 @@
 }
 
 .layout{
+    display: flex;
     min-height: 100vh;
 }
 
@@ -14,11 +15,14 @@
     top: 0;
     left:0;
     bottom: 0;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 2rem;
 }
 
 .right{
     margin-left: 260px;
-    width: calc(100%-260px);
+    width: calc(100% - 260px);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,13 +30,15 @@
 
 .navbar{
     height: 70px;
-    flex-shrink: 0;   
+    width: 100%;
+    flex-shrink: 0;
+    border-bottom:1px solid #e5e5e5; 
 }
 
 .content{
     flex: 1;
     padding: 25px;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .footer{

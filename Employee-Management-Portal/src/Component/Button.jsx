@@ -1,6 +1,8 @@
 import "../Styles/Button.css";
 function Button({
-    text,
+  text,
+  children,
+  title,
     onClick,
     type = "button",
     className = "",
@@ -9,11 +11,12 @@ function Button({
     return (
       <button
         type={type}
+        title={title}
         className={`button ${className}`}
         onClick={onClick}
         disabled={disabled}
       >
-        {text}
+        {children||text}
       </button>
     );
 }
