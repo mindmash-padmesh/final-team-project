@@ -176,14 +176,14 @@ return(
     </div>
     <form onSubmit={handleSubmit}className="timesheet-form">
       <Input type="text"name="employee"placeholder="Employee Name" value={formData.employee} onChange={handleChange} required/>
-      <Input intype="date" name="date" value={formData.date}onChange={handleChange}required/>
+      <Input type="date" name="date" value={formData.date}onChange={handleChange}required/>
       <Input type="time"name="checkIn"value={formData.checkIn} onChange={handleChange} required/>
       <Input type="time"name="checkOut" value={formData.checkOut} onChange={handleChange} required/>
       <select name="status" value={formData.status} onChange={handleChange} required>
-        <option value="" disabled> Select Status</option>
-        <option value="Present">Present</option>
-        <option value="Leave">Leave</option>
-        <option value="Halfday">Half Day</option>
+        <option value="" disabled>Work Status</option>
+        <option value="50%">50%</option>
+        <option value="75%">75%</option>
+        <option value="100%">100%</option>
       </select>
       <Button type="submit">{editingId?"Update Timesheet":"Add Timesheet"}</Button>
     </form>
