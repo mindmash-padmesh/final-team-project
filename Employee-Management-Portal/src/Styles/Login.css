@@ -9,7 +9,7 @@
   width: 100%;
   min-height: 100vh;
   padding: 4rem;
-  background:linear-gradient(145deg,rgb(83, 83, 84),rgb(171, 171, 175),rgb(83, 83, 84));
+  background:linear-gradient(145deg,rgb(61, 61, 102),rgb(164, 164, 236),rgb(61, 61, 102));
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
 
 .login-page > .brand-content p {
   max-width: 32rem;
-  color:#000;
+  color:var(--text-primary);
   font-size: 1.1rem;
   line-height: 1.7;
   font-weight: 600;
