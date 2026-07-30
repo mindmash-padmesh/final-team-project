@@ -6,7 +6,7 @@ function EmployeeForm({
     handleChange,
     handleSubmit,
     handleReset,
-    navigate,
+    onCancel,
     submitText,
 }) {
     return (
@@ -123,8 +123,8 @@ function EmployeeForm({
 
         <div className="button-group">
           <Button text={submitText} type="submit" />
-          <Button text="Reset" onClick={handleReset} />
-          <Button text="Cancel" onClick={() => navigate("/employees")} />
+          <Button text="Reset" onClick={handleReset} type="button"/>
+          <Button text="Cancel" type="button"  onClick={onCancel} />
         </div>
       </form>
     );
