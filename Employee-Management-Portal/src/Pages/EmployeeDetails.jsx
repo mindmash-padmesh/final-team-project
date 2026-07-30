@@ -33,7 +33,7 @@ function EmployeeDetails() {
         <div className="details-buttons">
           <Button text="Back" onClick={() => navigate("/employees")} />
 
-          <Button text="Edit Employee" onClick={()=>navigate(`/employees/edit/${employee.id}`)}/>
+          <Button text="Edit Employee" onClick={()=>navigate(`/edit-employee/${employee.id}`)}/>
         </div>
       </div>
 

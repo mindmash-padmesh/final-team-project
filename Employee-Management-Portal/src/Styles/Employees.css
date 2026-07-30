@@ -20,6 +20,7 @@
 }
 .employee-header {
     margin-bottom: 25px;
+    text-align: left;
 }
 .employee-header h1 {
     font-size: 32px;
@@ -36,15 +37,14 @@
 
 .search-box {
     flex: 1;
-    min-width: 300px;
-    max-width: 420px;
+    
 }
 
 .toolbar-buttons {
     display: flex;
     align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    gap: 15px;
+   
 }
 
 .employee-table-container {
@@ -99,7 +99,7 @@
     }
     .employee-header h1 {
         font-size: 28px;
-        text-align: center;
+        text-align: left;
     }
     .employee-toolbar {
         flex-direction: column;
@@ -108,12 +108,15 @@
     }
     .search-box {
         width: 100%;
-        max-width: 100%;
+        
     }
     .toolbar-buttons {
         width: 100%;
         flex-direction: column;
-        gap: 15px;
+     
+    }
+    .toolbar-buttons>*{
+        width: 100%;
     }
     .employee-table-container {
         height: 500px;

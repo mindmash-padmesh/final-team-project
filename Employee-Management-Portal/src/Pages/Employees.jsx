@@ -1,22 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
-import Input from "../Component/Input";
-import Button from "../Component/Button";
-import TextField from "@mui/material/TextField";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import MuiButton from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { DataGrid } from "@mui/x-data-grid";
 import { getEmployees, deleteEmployee, } from "../Services/employeeServices";
+import EmployeeToolbar from "../Component/EmployeeToolbar";
+import employeeColumns from "../utils/employeeColumns";
 import "../Styles/Employees.css";
+import Modal from "../Component/Modal";
 
 function Employees() {
   const navigate = useNavigate();
@@ -24,12 +13,15 @@ function Employees() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [sortOption, setSortOption] = useState("default");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showDeleteSuccessModal, setShowDeleteSuccessModal] =
+    useState(false);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
 
   useEffect(() => {
     async function fetchEmployees() {
       try {
         const data = await getEmployees();
-        console.log(data);
         setEmployees(data.users);
       } catch (error) {
         console.error("Error fetching employees:", error);
@@ -42,21 +34,24 @@ function Employees() {
     ...new Set(employees.map((employee) => employee.company.department)),
   ];
 
-  const handleDelete = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this employee?"
-    );
-    if (!confirmDelete) return;
+  const openDeleteModal = (id) => {
+    setSelectedEmployeeId(id);
+    setShowDeleteModal(true);
+  };
+  const handleDelete = async () => {
     try {
-      await deleteEmployee(id);
-
-      alert("Employee deleted Successfully");
-
+      await deleteEmployee(selectedEmployeeId);
+      
       const data = await getEmployees();
       setEmployees(data.users);
+
+      setShowDeleteModal(false);
+      setSelectedEmployeeId(null);
+
+      setShowDeleteSuccessModal(true);
     } catch (error) {
       console.error(error);
-      alert("Failed to delete employee");
+      alert("Failed to delete Employee");
     }
   };
 
@@ -77,7 +72,6 @@ function Employees() {
 
     return matchesSearch && matchesDepartment;
   });
-
 
   const sortedEmployees = [...filteredEmployees];
 
@@ -132,149 +126,23 @@ switch (sortOption) {
 
   }));
 
-  const columns = [
-    { field: "id", headerName: "ID", width: 80 },
-
-    {
-      field: "name",
-      headerName: "Employee Name",
-      flex: 1,
-      minWidth: 180,
-    },
-
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1.5,
-      minWidth: 220,
-    },
-
-    {
-      field: "department",
-      headerName: "Department",
-      flex: 1,
-      minWidth: 160,
-    },
-
-    {
-      field: "designation",
-      headerName: "Designation",
-      flex: 1,
-      minWidth: 180,
-    },
-
-    {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
-
-    {
-      field: "actions",
-      headerName: "Actions",
-      width: 170,
-      sortable: false,
-      filterable: false,
-
-      renderCell: (params) => (
-        <>
-          <Tooltip title="View">
-            <IconButton
-              color="primary"
-              onClick={() => navigate(`/employees/${params.row.id}`)}
-            >
-              <VisibilityIcon />
-            </IconButton>
-          </Tooltip>
-
-          <Tooltip title="Edit">
-            <IconButton
-              color="success"
-              onClick={() => navigate(`/edit-employee/${params.row.id}`)}
-            >
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
-
-          <Tooltip title="Delete">
-            <IconButton
-              color="error"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        </>
-      ),
-    },
-  ];
+  const columns = employeeColumns(navigate, openDeleteModal);
 
   return (
     <>
       <div className="employee-content">
         <div className="employee-header">
           <h1>Employees</h1>
-          <div className="employee-toolbar">
-            <div className="search-box">
-              <TextField
-                label="Search Employee"
-                variant="outlined"
-                size="small"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                fullWidth
-              />
-              </div>
-            <div className="toolbar-buttons">
-              <FormControl size="small" sx={{ minWidth: 180 }}>
-                <InputLabel>Department</InputLabel>
-                <Select
-                  value={selectedDepartment}
-                  label="Department"
-                  onChange={(e) => setSelectedDepartment(e.target.value)}
-                >
-                  <MenuItem value="All">All Departments</MenuItem>
-                  {departments.map((department) => (
-                    <MenuItem key={department} value={department}>
-                      {department}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-
-              <FormControl size="small" sx={{ minWidth: 180 }}>
-                <InputLabel>Sort By</InputLabel>
-                <Select
-                  value={sortOption}
-                  label="Sort By"
-                  onChange={(e) => setSortOption(e.target.value)}
-                >
-                  <MenuItem value="default">Default</MenuItem>
-                  <MenuItem value="name-asc">(A-Z)</MenuItem>
-                  <MenuItem value="name-desc">(Z-A)</MenuItem>
-                  <MenuItem value="id-asc">ID(Low to High)</MenuItem>
-                  <MenuItem value="id-desc">ID (High to Low)</MenuItem>
-                  <MenuItem value="department-asc">Department(A-Z)</MenuItem>
-                  <MenuItem value="department-desc">Department(Z-A)</MenuItem>
-                </Select>
-              </FormControl>
-
-              <MuiButton
-                variant="contained"
-                color="primary"
-                onClick={() => navigate("/add-employee")}
-                sx={{
-                  height: 40,
-                  textTransform: "none",
-                  borderRadius: "8px",
-                  fontWeight: 500,
-                  px: 2,
-                }}
-              >
-                +Add Employee
-              </MuiButton>
-            </div>
-          </div>
+          <EmployeeToolbar
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            selectedDepartment={selectedDepartment}
+            setSelectedDepartment={setSelectedDepartment}
+            departments={departments}
+            sortOption={sortOption}
+            setSortOption={setSortOption}
+            onAdd={() => navigate("/add-employee")}
+          />
         </div>
         <div
           className="employee-table-container"
@@ -315,6 +183,31 @@ switch (sortOption) {
           />
         </div>
       </div>
+      {showDeleteModal && (
+        <Modal
+          title="Delete Employee"
+          message="Are you sure you want to delete this employee?"
+          confirmText="Delete"
+          onClose={() => {
+            setShowDeleteModal(false);
+            setSelectedEmployeeId(null);
+          }}
+          onConfirm={handleDelete}
+        />
+      )}
+      {showDeleteSuccessModal && (
+        <Modal
+          title="Success"
+          message="Employee deleted successfully"
+          confirmText="OK"
+          onClose={() => {
+            setShowDeleteSuccessModal(false);
+          }}
+          onConfirm={() => {
+            setShowDeleteSuccessModal(false);
+          }}
+        />
+      )}
     </>
   );
 }
