@@ -1,0 +1,119 @@
+.apply-leave-form {
+  width: 100%;
+  margin-top: 30px;
+  padding: 28px;
+  background-color: var(--white, #ffffff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.08);
+}
+
+.apply-leave-form h2 {
+  margin: 0 0 24px;
+  color: var(--text-primary, #1f2937);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.apply-leave-form > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.apply-leave-form .group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.apply-leave-form .group label {
+  color: var(--text-primary, #1f2937);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.apply-leave-form .group input,
+.apply-leave-form .group select {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+  color: var(--text-primary, #1f2937);
+  background-color: var(--white, #ffffff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 7px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
+}
+
+.apply-leave-form .group input:hover,
+.apply-leave-form .group select:hover {
+  border-color: var(--secondary-color, #3b82f6);
+}
+
+.apply-leave-form .group input:focus,
+.apply-leave-form .group select:focus {
+  border-color: var(--primary-color, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.apply-leave-form .group select {
+  cursor: pointer;
+}
+
+.apply-leave-form button {
+  display: block;
+  margin: 25px 0 0 auto ;
+  padding: 11px 24px;
+  color: var(--white, #ffffff);
+  background-color: var(--primary-color, #2563eb);
+  border: none;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.apply-leave-form button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.apply-leave-form button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .apply-leave-form {
+    padding: 22px;
+  }
+
+  .apply-leave-form > div {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-leave-form button{
+    margin: 25px auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .apply-leave-form {
+    padding: 18px 15px;
+  }
+
+  .apply-leave-form h2 {
+    font-size: 1.2rem;
+  }
+
+  .apply-leave-form button {
+    width: 100%;
+  }
+}

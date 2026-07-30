@@ -1,14 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import '../Styles/Home.css';
-
-import {
-  FiArrowRight,
-  FiCalendar,
-  FiClock,
-  FiUsers,
-} from "react-icons/fi";
-
-import "../Styles/Home.css";
+import { FiArrowRight, FiCalendar, FiClock, FiUsers,} from "react-icons/fi";
 
 function Home() {
   const navigate = useNavigate();
@@ -55,14 +47,7 @@ function Home() {
             attendance, leaves and timesheets from one place.
           </p>
 
-          <button
-            className="home-login-btn"
-            type="button"
-            onClick={goToLogin}
-          >
-            Login to Dashboard
-            <FiArrowRight />
-          </button>
+          <button className="home-login-btn" type="button" onClick={goToLogin} > Login to Dashboard <FiArrowRight /> </button>
         </div>
       </section>
 

@@ -51,6 +51,13 @@ function RecentActivities(){
                columns={column} 
                initialState={{ pagination: { paginationModel: { pageSize: 5, page: 0}}}} 
                pageSizeOptions={[5, 10]} disableRowSelectionOnClick 
+               sx={{
+                    "& .MuiDataGrid-columnHeader":{
+                        backgroundColor:"var(--primary-color)",
+                        color:"var(--white)",
+                        fontSize:"17px"
+                    }
+                }}
             />
         </Box>
 
