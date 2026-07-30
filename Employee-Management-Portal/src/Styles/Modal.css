@@ -1,7 +1,7 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  padding: 20px;
+  padding: 1.25rem;
   background-color: rgba(15, 23, 42, 0.55);
   display: flex;
   justify-content: center;
@@ -11,22 +11,22 @@
 
 .modal {
   width: 100%;
-  max-width: 420px;
-  padding: 26px;
-  border-radius: 12px;
+  max-width: 26.25rem;
+  padding: 1.625rem;
+  border-radius: .75rem;
   background-color: var(--white);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 1.25rem 2.8125rem rgba(15, 23, 42, 0.25);
   animation: open-modal 0.2s ease;
 }
 
 .modal h2 {
-  margin-bottom: 12px;
+  margin-bottom: .75rem;
   color: var(--text-primary);
-  font-size: 1.35rem;
+  font-size: 21.6px;
 }
 
 .modal p {
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -34,20 +34,20 @@
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: .625rem;
 }
 
 .modal-actions button {
-  padding: 10px 18px;
-  border-radius: 7px;
-  font-size: 0.9rem;
+  padding: .625rem 1.125rem;
+  border-radius: .4375rem;
+  font-size: 14.4px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .cancel-btn {
-  border: 1px solid var(--border-color);
+  border: .0625rem solid var(--border-color);
   background-color: var(--white);
   color: var(--text-primary);
 }
@@ -80,7 +80,7 @@
 @keyframes open-modal {
   from {
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateY(-0.75rem);
   }
 
   to {

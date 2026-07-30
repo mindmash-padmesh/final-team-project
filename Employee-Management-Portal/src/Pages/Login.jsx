@@ -33,8 +33,10 @@ const login = (e) => {
   return (
     <>
     <div className="login">
-      <h1>Welcome to EMP</h1>
-      <p>Sign in with your work email to open your dashboard.</p>
+      <div>
+        <h1>Welcome to EMP</h1>
+        <p>Sign in with your work email to open your dashboard.</p>
+      </div>
       <form onSubmit={login}>
         <div className="input">
           <label htmlFor="email">Email</label>

@@ -95,10 +95,15 @@
   font-weight: 600;
 }
 
+.validation-error{
+  color: var(--danger-color);
+  margin-top: 25px;
+}
+
 .edit-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 768px) {

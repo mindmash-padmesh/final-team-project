@@ -15,12 +15,23 @@ import AddEmployee from "../Pages/AddEmployee";
 import EmployeeDetails from "../Pages/EmployeeDetails";
 import EditEmployee from "../Pages/EditEmployee";
 
+function ProtectedRoute({ children }) {
+  const isLoggedIn =
+    localStorage.getItem("authToken") === "logged-in";
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={ <ProtectedRoute> <Layout /> </ProtectedRoute> }>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="/employees" element={<Employees />} />
         <Route path="/add-employee" element={<AddEmployee />} />
