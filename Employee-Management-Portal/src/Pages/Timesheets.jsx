@@ -111,36 +111,43 @@ const column=[
     field:"employee",
     headerName:"Employee",
     flex:1,
+    minWidth:180,
   },
   {
     field:"date",
     headerName:"Date",
     flex:1,
+    minWidth:140,
   },
   {
     field:"checkIn",
     headerName:"Check In",
     flex:1,
+    minWidth:130,
   },
   {
     field: "checkOut",
     headerName: "Check Out",
     flex: 1,
+    minWidth:130,
   },
   {
     field: "hours",
     headerName: "Hours",
     flex: 1,
+    minWidth:100,
   },
   {
     field: "status",
     headerName: "Status",
     flex: 1,
+    minWidth:140,
   },
   {
     field:"actions",
     headerName:"Actions",
     flex:1.2,
+    minWidth:170,
     sortable:false,
     renderCell:(params)=>(
       <div className="btn">

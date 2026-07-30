@@ -74,25 +74,30 @@ function Attendance(){
             field:"employee",
             headerName:"Employee",
             flex:1.5,
+            minWidth:130,
         },
         {
             field:"department",
             headerName:"Department",
             flex:1,
+            minWidth:120,
         },
         {
             field:"checkIn",
             headerName:"Check In",
             flex:1.5,
+            minWidth:100,
         },
         {
             field:"checkOut",
             headerName:"Check Out",
             flex:1,
+            minWidth:100,
         },
         {
             field:"status",
             headerName:"Status",
+            minWidth:110,
             flex:1,
             renderCell:(params)=>{
                 return (
