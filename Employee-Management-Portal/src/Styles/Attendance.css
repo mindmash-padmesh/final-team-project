@@ -62,9 +62,10 @@
     outline: none;
     font-size: 15px;
     transition: 0.3s;
+    border:1px solid #d1d5db;
 }
 
-.attendance-form section:focus{
+.attendance-form select:focus{
     border-color:var(--primary-color);
 }
 
@@ -100,15 +101,9 @@
     align-items: center;
 }
 
-
 @media(max-width:768px){
     .attendance-form{
         grid-template-columns: 1fr;
-    }
-
-    .attendance-form button{
-        grid-column: span 1;
-        width: 100%;
     }
     .summary-cards{
         display: grid;

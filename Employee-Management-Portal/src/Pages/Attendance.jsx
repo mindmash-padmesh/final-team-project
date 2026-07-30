@@ -17,34 +17,48 @@ function Attendance(){
     }, [attendance]);
     const[formData,setFormData]=useState({
         employee:"",
-        department:"",
         date:"",
-        checkIn:"",
-        checkOut:"",
         status:"",
     });
-
+    const getCurrentDate = ()=>{
+        return new Date().toISOString().split("T")[0]
+    }
+    const getCurrentTime = ()=>{
+        return new Date().toLocaleTimeString([],{
+            hour:"2-digit",
+            minute:"2-digit",
+        });
+    };
     const handleChange=(e)=>{
         setFormData({
             ...formData,[e.target.name]:e.target.value,
         });
     };
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        const newAttendance={
-            id:Date.now(),
-            ...formData,
-        };
+    const handleMarkAttendance=()=>{
+        if(!formData.employee){
+            alert("Please fill all fields.");
+            return;
+        }
+        const today=getCurrentDate();
+        const exists=attendance.find((item)=>item.employee.toLowerCase()===formData.employee.toLocaleLowerCase()&&item.date===today);
+        if(exists){
+            alert("Attendance marked already");
+            return;
+        }
+        const newAttendance={id:Date.now(),employee:formData.employee,date:today,checkIn:getCurrentTime(),checkOut:"",status:formData.status};
         setAttendance((prev)=>[...prev,newAttendance]);
         setShowModal(true);
         setFormData({
             employee:"",
-            department:"",
-            date:"",
-            checkIn:"",
-            checkOut:"",
             status:"",
+            date:"",
         });
+    };
+    const handleCheckOut=(id)=>{
+        const currentTime=getCurrentTime();
+        setAttendance((prev)=>prev.map((item)=>item.id===id?{
+            ...item,checkOut:currentTime,
+        }:item));
     };
     const present=attendance.filter((item)=>item.status==="Present");
     const absent=attendance.filter((item)=>item.status==="Absent");
@@ -77,8 +91,8 @@ function Attendance(){
             minWidth:130,
         },
         {
-            field:"department",
-            headerName:"Department",
+            field:"date",
+            headerName:"Date",
             flex:1,
             minWidth:120,
         },
@@ -93,16 +107,18 @@ function Attendance(){
             headerName:"Check Out",
             flex:1,
             minWidth:100,
+            renderCell:(params)=>params.value?params.value:"--",
         },
         {
-            field:"status",
-            headerName:"Status",
+            field:"action",
+            headerName:"Action",
             minWidth:110,
             flex:1,
+            sortable:false,
             renderCell:(params)=>{
-                return (
-                    <span style={{fontWeight:600,}}>{params.value}</span>
-                );
+                return params.row.checkOut?(
+                    <Button disabled>Completed</Button>
+                ):(<Button onClick={()=>handleCheckOut(params.row.id)}>Check out</Button>);
             },
         },
     ];
@@ -121,19 +137,16 @@ function Attendance(){
                 ))}
             </div>
             <div className="attendance-form-container">
-                <form className="attendance-form" onSubmit={handleSubmit}>
+                <form className="attendance-form">
                     <Input type="text" name="employee" placeholder="Employee name" value={formData.employee} onChange={handleChange}required/>
-                    <Input type="text" name="department" placeholder="Department name" value={formData.department} onChange={handleChange}required/>
-                    <Input type="date" name="date"  value={formData.date} onChange={handleChange}required/>
-                    <Input type="time" name="checkIn" value={formData.checkIn} onChange={handleChange}required/>
-                    <Input type="time" name="checkOut"  value={formData.checkOut} onChange={handleChange}required/>
+                    <Input type="date" name="date"  value={formData.employee} onChange={handleChange}required/>
                     <select name="status" value={formData.status} onChange={handleChange}required>
                         <option value="" disabled>Select status</option>
                         <option value="Present">Present</option>
                         <option value="Absent">Absent</option>
                         <option value="Leave">Leave</option>
                     </select>
-                    <Button type="submit"> Add Attendance</Button>
+                    <Button onClick={handleMarkAttendance}>Mark Attendance</Button>
                 </form>
             </div>
             <div className="table-container">
