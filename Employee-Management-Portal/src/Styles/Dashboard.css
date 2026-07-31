@@ -29,9 +29,10 @@
   border: .0625rem solid var(--border-color);
   border-radius: .5rem;
   background-color: var(--white);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: .9375rem;
   white-space: nowrap;
+  text-align: center;
 }
 
 .dashboard-stats {

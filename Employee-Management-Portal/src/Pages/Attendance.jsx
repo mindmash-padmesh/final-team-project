@@ -5,6 +5,7 @@ import "../Styles/Attendance.css";
 import Modal from "../Component/Modal";
 import Input from "../Component/Input";
 import Button from "../Component/Button";
+import CustomPagination from "../Component/CustomPagination";
 
 function Attendance(){
     const[showModal,setShowModal]=useState(false);
@@ -146,6 +147,7 @@ function Attendance(){
                             },
                     }}
                     disableRowSelectionOnClick
+                    slots={{  pagination: CustomPagination, }}
                 />
             </div>
             {showModal&&(

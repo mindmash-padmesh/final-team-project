@@ -6,6 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { FiEdit2,FiTrash2,FiUsers,FiClock,FiTrendingUp,FiCalendar } from "react-icons/fi";
 import Input from "../Component/Input";
 import Button from "../Component/Button";
+import CustomPagination from "../Component/CustomPagination";
 
 function Timesheets(){
   const[timesheets,setTimesheets]=useState(()=>{
@@ -176,7 +177,7 @@ return(
     </div>
     <form onSubmit={handleSubmit}className="timesheet-form">
       <Input type="text"name="employee"placeholder="Employee Name" value={formData.employee} onChange={handleChange} required/>
-      <Input intype="date" name="date" value={formData.date}onChange={handleChange}required/>
+      <Input type="date" name="date" value={formData.date}onChange={handleChange}required/>
       <Input type="time"name="checkIn"value={formData.checkIn} onChange={handleChange} required/>
       <Input type="time"name="checkOut" value={formData.checkOut} onChange={handleChange} required/>
       <select name="status" value={formData.status} onChange={handleChange} required>
@@ -193,7 +194,7 @@ return(
     borderRadius:"10px",
     }}>
     <div className="table-container">
-      <DataGrid rows={filtered} columns={column} pageSizeOptions={[5, 10, 20]} initialState={{ pagination: { paginationModel: { page: 0, pageSize: 5,},},}} disableRowSelectionOnClick />
+      <DataGrid rows={filtered} columns={column} pageSizeOptions={[5, 10, 20]} initialState={{ pagination: { paginationModel: { page: 0, pageSize: 5,},},}} disableRowSelectionOnClick slots={{  pagination: CustomPagination, }} />
     </div>
   </div>
   {showModal&&(

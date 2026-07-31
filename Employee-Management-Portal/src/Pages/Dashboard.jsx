@@ -1,5 +1,5 @@
 import '../Styles/Dashboard.css';
-import { MdAccessTime, MdBeachAccess, MdCheckCircle, MdPeople, MdPersonOff } from 'react-icons/md';
+import { MdAccessTime, MdBeachAccess, MdCheckCircle, MdPeople, MdPersonOff, MdCalendarToday } from 'react-icons/md';
 import Card from '../Component/Card';
 import dashboardData from '../utils/dashboardData.json';
 import RecentActivities from '../Component/RecentActivities';
@@ -21,7 +21,7 @@ function Dashboard(){
                     <h1>DASHBOARD</h1>
                     <p>Welcome back ! Here is today's overview.</p>
                 </div>
-                <span>{new Date().toLocaleDateString()}</span>
+                <span><MdCalendarToday /> {new Date().toLocaleDateString()}</span>
             </div>
             <section className='dashboard-stats'>
               {dashboardData.map((item) => (

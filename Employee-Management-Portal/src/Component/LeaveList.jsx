@@ -2,6 +2,7 @@ import {Box, Typography, Button, Chip} from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import Modal from './Modal';
 import {useState} from "react";
+import CustomPagination from './CustomPagination';
 
 function LeaveList({rows, setRows}){
 
@@ -138,7 +139,7 @@ function LeaveList({rows, setRows}){
                initialState={{ pagination: { paginationModel: { pageSize: 5, page: 0}}}} 
                pageSizeOptions={[5, 10]} disableRowSelectionOnClick
                showToolbar
-
+               slots={{  pagination: CustomPagination, }}
                sx={{
                  "& .MuiDataGrid-columnHeader":{
                   backgroundColor:"var(--primary-color)",
@@ -148,7 +149,7 @@ function LeaveList({rows, setRows}){
                }}
             />
         </Box>
-        {confirmation && (
+      {confirmation && (
       <Modal
         title={
           confirmation.status === "Approved"

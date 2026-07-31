@@ -2,6 +2,7 @@ import {Card, CardContent, List, ListItem, ListItemText, Typography, Box, colors
 import { MdPersonAdd, MdCheckCircle, MdEdit, MdPersonOff,} from "react-icons/md";
 import recentActivities from "../utils/recentActivities.json";
 import {DataGrid} from '@mui/x-data-grid';
+import CustomPagination from "./CustomPagination";
 
 function RecentActivities(){
     const column=[
@@ -51,6 +52,7 @@ function RecentActivities(){
                columns={column} 
                initialState={{ pagination: { paginationModel: { pageSize: 5, page: 0}}}} 
                pageSizeOptions={[5, 10]} disableRowSelectionOnClick 
+               slots={{  pagination: CustomPagination, }}
                sx={{
                     "& .MuiDataGrid-columnHeader":{
                         backgroundColor:"var(--primary-color)",
