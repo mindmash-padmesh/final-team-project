@@ -9,11 +9,13 @@ import CustomPagination from "../Component/CustomPagination";
 
 function Attendance(){
     const [error, setError] = useState("");
+    const[modalMessage,setModalMessage]=useState("");
     const[showModal,setShowModal]=useState(false);
     const [attendance, setAttendance] = useState(() => {
         const savedAttendance = localStorage.getItem("attendance");
         return savedAttendance ? JSON.parse(savedAttendance) : [];
     });
+    
     useEffect(() => {
         localStorage.setItem("attendance", JSON.stringify(attendance));
     }, [attendance]);
@@ -47,6 +49,13 @@ function Attendance(){
             return;
         }
         const newAttendance={id:Date.now(),employee:formData.employee,date:today,checkIn:getCurrentTime(),checkOut:"",status:formData.status};
+        if (formData.status === "Present") {
+            setModalMessage("Attendance marked successfully!");
+        } else if (formData.status === "Leave") {
+            setModalMessage("Leave marked successfully!");
+        } else if (formData.status === "Absent") {
+            setModalMessage("Absent marked successfully!");
+        }
         setAttendance((prev)=>[...prev,newAttendance]);
         setShowModal(true);
         setFormData({
@@ -116,9 +125,13 @@ function Attendance(){
             flex:1,
             sortable:false,
             renderCell:(params)=>{
-                return params.row.checkOut?(
-                    <Button disabled>Completed</Button>
-                ):(<Button onClick={()=>handleCheckOut(params.row.id)}>Check out</Button>);
+                if(params.row.status==="Leave"){
+                    return(<Button disabled>Leave</Button>);
+                }
+                if(params.row.status==="Absent"){
+                    return(<Button disabled>Absent</Button>);
+                }
+                return params.row.checkOut?(<Button disabled>Completed</Button>):(<Button onClick={()=>handleCheckOut(params.row.id)}>Check Out</Button>)
             },
         },
     ];
@@ -164,7 +177,7 @@ function Attendance(){
             </div>
             {showModal&&(
                 <Modal
-                title="Success" message="Attendance marked successfully !" confirmText="OK" confirmColor="success" onConfirm={()=>setShowModal(false)}onClose={()=>setShowModal(false)}/>
+                title="Success" message={modalMessage} confirmText="OK" confirmColor="success" onConfirm={()=>setShowModal(false)}onClose={()=>setShowModal(false)}/>
             )}
         </div>
     )
