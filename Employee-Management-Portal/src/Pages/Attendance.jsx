@@ -18,7 +18,6 @@ function Attendance(){
     }, [attendance]);
     const[formData,setFormData]=useState({
         employee:"",
-        date:"",
         status:"",
     });
     const getCurrentDate = ()=>{
@@ -52,7 +51,6 @@ function Attendance(){
         setFormData({
             employee:"",
             status:"",
-            date:"",
         });
     };
     const handleCheckOut=(id)=>{
@@ -140,7 +138,6 @@ function Attendance(){
             <div className="attendance-form-container">
                 <form className="attendance-form">
                     <Input type="text" name="employee" placeholder="Employee name" value={formData.employee} onChange={handleChange}required/>
-                    <Input type="date" name="date"  value={formData.employee} onChange={handleChange}required/>
                     <select name="status" value={formData.status} onChange={handleChange}required>
                         <option value="" disabled>Select status</option>
                         <option value="Present">Present</option>
