@@ -6,6 +6,7 @@ import EmployeeToolbar from "../Component/EmployeeToolbar";
 import employeeColumns from "../utils/employeeColumns";
 import "../Styles/Employees.css";
 import Modal from "../Component/Modal";
+import CustomPagination from "../Component/CustomPagination";
 
 function Employees() {
   const navigate = useNavigate();
@@ -162,6 +163,7 @@ switch (sortOption) {
             }}
             pageSizeOptions={[5, 10, 20]}
             disableRowSelectionOnClick
+            slots={{  pagination: CustomPagination, }}
             sx={{
               border: 0,
               "& .MuiDataGrid-columnHeaders": {

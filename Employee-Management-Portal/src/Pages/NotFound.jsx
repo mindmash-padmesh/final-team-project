@@ -10,7 +10,7 @@ function NotFound(){
                 <img src={Image} alt="NotFound image"/>
                 <marquee>Oops! Page Not Found</marquee>
                 <p>The page you are looking for might have been removed,renamed, or is temporarily unavailable.</p>
-                <Link to="/login" className="Back"><FaArrowLeft/><span>Go Back</span></Link>
+                <Link to="/login" onClick={() => localStorage.removeItem("authToken")} className="Back"><FaArrowLeft/><span>Go Back</span></Link>
             </div>
         </div>
     );
