@@ -101,6 +101,11 @@
     align-items: center;
 }
 
+.valid-error{
+    color: var(--danger-color);
+    margin-bottom: 1rem;
+}
+
 @media(max-width:768px){
     .attendance-form{
         grid-template-columns: 1fr;

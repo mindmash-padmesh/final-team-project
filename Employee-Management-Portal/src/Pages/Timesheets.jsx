@@ -9,6 +9,7 @@ import Button from "../Component/Button";
 import CustomPagination from "../Component/CustomPagination";
 
 function Timesheets(){
+  const [error, setError]=useState("");
   const[timesheets,setTimesheets]=useState(()=>{
     const saved=localStorage.getItem("timesheets");
     return saved?JSON.parse(saved):[];
@@ -39,6 +40,10 @@ function Timesheets(){
   };
   const handleSubmit=(e)=>{
     e.preventDefault();
+    const employeeName = formData.employee.trim();
+      if(!employeeName){
+        return setError("Please fill all fields.") ;
+      }
     const hours=calculateHours(
       formData.checkIn,
       formData.checkOut
@@ -187,6 +192,7 @@ return(
         <option value="100%">100%</option>
       </select>
       <Button type="submit">{editingId?"Update Timesheet":"Add Timesheet"}</Button>
+      {error && <p className="error-valid">{error}</p>}
     </form>
   <div style={{height:500,
     width:"100%",

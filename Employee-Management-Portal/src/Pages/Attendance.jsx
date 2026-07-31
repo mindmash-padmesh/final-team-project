@@ -8,6 +8,7 @@ import Button from "../Component/Button";
 import CustomPagination from "../Component/CustomPagination";
 
 function Attendance(){
+    const [error, setError] = useState("");
     const[showModal,setShowModal]=useState(false);
     const [attendance, setAttendance] = useState(() => {
         const savedAttendance = localStorage.getItem("attendance");
@@ -36,9 +37,9 @@ function Attendance(){
         });
     };
     const handleMarkAttendance=()=>{
-        if(!formData.employee){
-            alert("Please fill all fields.");
-            return;
+        const employeeName = formData.employee.trim();
+        if(!employeeName){
+            return setError("Please fill all fields.") ;
         }
         const today=getCurrentDate();
         const exists=attendance.find((item)=>item.employee.toLowerCase()===formData.employee.toLocaleLowerCase()&&item.date===today);
@@ -138,6 +139,7 @@ function Attendance(){
                 ))}
             </div>
             <div className="attendance-form-container">
+                {error && <p className="valid-error">{error}</p>}
                 <form className="attendance-form">
                     <Input type="text" name="employee" placeholder="Employee name" value={formData.employee} onChange={handleChange}required/>
                     <Input type="date" name="date"  value={formData.employee} onChange={handleChange}required/>
